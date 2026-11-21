@@ -1,80 +1,64 @@
-# 202368350-maryamalbasri-assignment2
-# Maryam Albasri - Personal Portfolio (Assignment 2)
-
-An interactive, responsive personal portfolio website built with HTML, CSS, and JavaScript for **SWE363 - Web Engineering, Assignment 2** at King Fahd University of Petroleum and Minerals (KFUPM).
-
-This project builds on my Assignment 1 portfolio by adding dynamic content, data handling, animations, and user feedback.
-
-## Live Demo
-🔗 [View the website](https://maryamalbasri.github.io/202368350-maryamalbasri-assignment2/)
-
-## What's New Since Assignment 1
-| Feature | Description |
-|---|---|
-| **Project filter** | Buttons to show All, Web, or Hardware projects |
-| **Live search** | Projects are filtered as you type |
-| **Empty state** | A clear "No projects found" message when nothing matches |
-| **Dark / light theme** | A toggle in the navbar, saved with `localStorage` so the choice is remembered |
-| **Form validation** | Custom error messages for empty fields, invalid emails, and short messages |
-| **Animations** | Card hover lift, button colour transitions, theme fade, and an animated confirmation message |
-
-## Features Carried Over From Assignment 1
-- About Me section with a greeting based on the time of day
-- Projects section with an image popup (lightbox)
-- Contact form (no backend)
-- Active navigation link highlighting
-- Smooth scrolling and a responsive layout for desktop, tablet, and mobile
-
+# Maryam Albasri – Portfolio (Assignment 3)
+ 
+A personal portfolio website built with HTML, CSS and vanilla JavaScript for SWE363 Web Engineering at KFUPM. It builds on Assignments 1 and 2 and adds API integration, more advanced logic, state management and performance work.
+ 
+**Live site:** https://maryamalbasri.github.io/202368350-MaryamAlbasri-assignment3/
+ 
+## Features
+ 
+- **GitHub API:** shows my latest public repositories, with a loading message and a friendly error message if the request fails.
+- **Projects filter, search and sort:** filter by category (Web / Hardware), search by text, and sort by newest, oldest or name. All three work together.
+- **Contact form validation:** checks for empty fields, a valid email format and a minimum message length before showing a confirmation.
+- **Visitor name:** the visitor can save their name and is greeted by it (with a time-of-day greeting) on later visits.
+- **Dark / light mode:** the chosen theme is remembered after a refresh.
+- **Visit timer:** shows how long the visitor has been on the page.
+- **Extras:** image popup (lightbox), active section highlight in the navbar, responsive layout for phones and tablets.
 ## Technologies
-- HTML5 (semantic elements, data attributes)
-- CSS3 (Flexbox, Grid, CSS variables, media queries, transitions, keyframe animation)
-- JavaScript (ES6, DOM manipulation, IntersectionObserver, localStorage, regular expressions)
-
-## Project Structure
+ 
+- HTML5, CSS3 (Flexbox, Grid, CSS variables, media queries)
+- JavaScript (ES6+, `fetch`, `async/await`, `localStorage`, `IntersectionObserver`)
+- GitHub REST API (no key required)
+## Setup – Run Locally
+ 
+No installation or build step is needed.
+ 
+1. Clone the repository:
+```bash
+git clone https://github.com/MaryamAlbasri/202368350-MaryamAlbasri-assignment3.git
+cd 202368350-MaryamAlbasri-assignment3
 ```
-202368350-maryamalbasri-assignment2/
+2. Open `index.html` in any modern browser.
+   Or run a small local server (needed for tools like Lighthouse):
+```bash
+python3 -m http.server 8000
+```
+   then visit `http://localhost:8000`.
+ 
+An internet connection is needed for the GitHub repositories section.
+ 
+## Project Structure
+ 
+```
 ├── README.md
 ├── index.html
-├── css/
-│   └── styles.css
-├── js/
-│   └── script.js
-├── assets/
-│   └── images/
+├── css/styles.css
+├── js/script.js
+├── assets/images/
 ├── docs/
 │   ├── ai-usage-report.md
 │   └── technical-documentation.md
 └── .gitignore
 ```
-
-## Setup Instructions (Run Locally)
-No installation or dependencies are needed.
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/MaryamAlbasri/202368350-maryamalbasri-assignment2.git
-   ```
-2. Open the project folder:
-   ```bash
-   cd 202368350-maryamalbasri-assignment2
-   ```
-3. Open `index.html` in any web browser (double-click the file, or right-click → Open With → your browser).
-
-**Optional:** In VS Code, use the *Live Server* extension to auto-refresh the page while editing.
-
-## How to Use
-- Use the navigation bar to jump to **About**, **Projects**, or **Contact**.
-- Click **All**, **Web**, or **Hardware** to filter the projects, or type in the search box to find one by name.
-- Click the **🌙 / ☀️** button to switch between light and dark mode. Your choice is saved for next time.
-- Click a project image to open it larger, and close it with ✕, a background click, or the Esc key.
-- Fill in the contact form and press **Send**. Invalid fields show an error message; a valid form shows a confirmation.
-
-## AI Use Summary
-I used **Claude** to help generate and explain the new interactive features, debug problems in my code, and draft documentation. I chose which features to build, edited the code, fixed the structure when pasting broke it, and tested everything in the browser. Full details are in [docs/ai-usage-report.md](docs/ai-usage-report.md).
-
-## Documentation
-- [Technical Documentation](docs/technical-documentation.md)
-- [AI Usage Report](docs/ai-usage-report.md)
-
+ 
+## Performance
+ 
+Images were resized and compressed, project images use lazy loading, and duplicate CSS and unused code were removed. Lighthouse (desktop): **Performance 100 · Accessibility 100 · Best Practices 96 · SEO 100**.
+ 
+## AI Use
+ 
+I used Claude (Anthropic, Opus 5.5) to understand the requirements, plan the work, generate starter code for the GitHub API section, sorting, visit timer and visitor name features, and review my CSS. I tested every feature, edited the code to fit my site and made sure I understand it. Commits containing AI-assisted code are marked with `Assisted-by: Claude (Opus 5.5)`. Full details, the usage log and my declaration are in [docs/ai-usage-report.md](docs/ai-usage-report.md).
+ 
 ## Author
-**Maryam Albasri** - Computer Science student, KFUPM
+ 
+Maryam Albasri – Computer Science, KFUPM
+ 
