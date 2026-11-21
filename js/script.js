@@ -1,15 +1,39 @@
-/* Show a greeting based on the current hour */
+/* Greeting based on the time of day, plus the visitor's saved name */
 const greeting = document.getElementById("greeting");
-const hour = new Date().getHours();
+const nameBox = document.getElementById("name-box");
+const nameInput2 = document.getElementById("visitor-name");
+const saveNameBtn = document.getElementById("save-name");
+const changeNameBtn = document.getElementById("change-name");
 
-if (hour < 12) {
-  greeting.textContent = "Good morning! 👋";
-} else if (hour < 18) {
-  greeting.textContent = "Good afternoon! 👋";
-} else {
-  greeting.textContent = "Good evening! 👋";
+function showGreeting() {
+  const hour = new Date().getHours();
+  const name = localStorage.getItem("visitorName");
+
+  let text = "Good evening";
+  if (hour < 12) text = "Good morning";
+  else if (hour < 18) text = "Good afternoon";
+
+  greeting.textContent = name ? `${text}, ${name}! 👋` : `${text}! 👋`;
+
+  /* Show the input if there is no name yet, otherwise the change button */
+  nameBox.classList.toggle("hidden", Boolean(name));
+  changeNameBtn.classList.toggle("hidden", !name);
 }
 
+saveNameBtn.addEventListener("click", () => {
+  const name = nameInput2.value.trim();
+  if (name === "") return; /* ignore empty names */
+  localStorage.setItem("visitorName", name);
+  nameInput2.value = "";
+  showGreeting();
+});
+
+changeNameBtn.addEventListener("click", () => {
+  localStorage.removeItem("visitorName");
+  showGreeting();
+});
+
+showGreeting();
 
 
 
@@ -263,3 +287,20 @@ function sortProjects() {
 
 sortSelect.addEventListener("change", sortProjects);
 sortProjects(); /* apply the default order on page load */
+
+/* Show how long the visitor has been on the page */
+const visitTimer = document.getElementById("visit-timer");
+const startTime = Date.now();
+
+function updateTimer() {
+  const seconds = Math.floor((Date.now() - startTime) / 1000);
+  const minutes = Math.floor(seconds / 60);
+
+  /* Show minutes only after the first minute */
+  visitTimer.textContent =
+    minutes > 0
+      ? `You've been here for ${minutes}m ${seconds % 60}s`
+      : `You've been here for ${seconds}s`;
+}
+
+setInterval(updateTimer, 1000); /* update every second */

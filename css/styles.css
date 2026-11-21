@@ -262,9 +262,8 @@ footer {
   background: var(--accent);
   color: #ffffff;
 }
-
 #project-search,
-#project-sort {  flex: 1;
+#project-sort {
   min-width: 180px;
   padding: 8px 12px;
   border: 1px solid var(--muted);
@@ -272,6 +271,15 @@ footer {
   font: inherit;
   background: var(--bg);
   color: var(--text);
+}
+
+/* Only the search box stretches to fill the space */
+#project-search {
+  flex: 1;
+}
+
+#project-sort {
+  cursor: pointer;
 }
 
 
@@ -345,4 +353,39 @@ footer {
 
 .repo-meta {
   font-size: 0.85rem;
+}
+
+/* Visitor name box */
+#name-box {
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 16px;
+}
+
+#name-box.hidden {
+  display: none;
+}
+
+#visitor-name {
+  padding: 6px 12px;
+  border: 1px solid var(--muted);
+  border-radius: 20px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+}
+
+#save-name,
+#change-name {
+  padding: 6px 14px;
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  background: none;
+  color: var(--accent);
+  cursor: pointer;
+  font: inherit;
+}
+
+#change-name {
+  margin-bottom: 16px;
 }

@@ -28,6 +28,12 @@
     <!-- About Me -->
     <section id="about">
       <p id="greeting"></p>
+            <!-- Ask for the visitor's name (hidden once it's saved) -->
+      <div id="name-box">
+        <input type="text" id="visitor-name" placeholder="What's your name?" aria-label="Your name">
+        <button id="save-name">Save</button>
+      </div>
+      <button id="change-name" class="hidden">Change name</button>
       <h1>Maryam Albasri</h1>
       <p class="tagline">Computer Science student</p>
       <p>I'm a Computer Science student at King Fahd University of Petroleum and Minerals. I enjoy building clean,
@@ -111,6 +117,7 @@
   <!-- Footer -->
   <footer>
     <p>&copy; 2026 Maryam Albasri</p>
+    <p id="visit-timer">You've been here for 0s</p>
   </footer>
 
   <!-- JavaScript loaded last so all HTML elements exist first -->
