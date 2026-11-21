@@ -186,3 +186,61 @@ themeToggle.addEventListener("click", () => {
   /* Save the choice so it is still there after a refresh */
   localStorage.setItem("theme", isDark ? "dark" : "light");
 });
+
+/* Fetch my public repositories from the GitHub API */
+const GITHUB_USER = "MaryamAlbasri";
+const repoList = document.getElementById("repo-list");
+const repoStatus = document.getElementById("repo-status");
+
+async function loadRepos() {
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${GITHUB_USER}/repos?sort=updated&per_page=6`
+    );
+
+    /* fetch only fails on network errors, so check the status too */
+    if (!response.ok) throw new Error(`GitHub returned ${response.status}`);
+
+    const repos = await response.json();
+
+    if (repos.length === 0) {
+      repoStatus.textContent = "No public repositories yet.";
+      return;
+    }
+
+    repoStatus.textContent = "";
+
+    /* Build one card per repository */
+    repos.forEach((repo) => {
+      const card = document.createElement("article");
+      card.className = "project-card repo-card";
+
+      const title = document.createElement("h3");
+      const link = document.createElement("a");
+      link.href = repo.html_url;
+      link.target = "_blank";
+      link.rel = "noopener";
+      link.textContent = repo.name;
+      title.appendChild(link);
+
+      const desc = document.createElement("p");
+      desc.textContent = repo.description || "No description provided.";
+
+      const meta = document.createElement("p");
+      meta.className = "repo-meta";
+      const updated = new Date(repo.updated_at).toLocaleDateString();
+      meta.textContent = `${repo.language || "—"} · ⭐ ${repo.stargazers_count} · Updated ${updated}`;
+
+      card.append(title, desc, meta);
+      repoList.appendChild(card);
+    });
+  } catch (error) {
+    /* User-friendly message if the API fails */
+    repoStatus.textContent =
+      "Sorry, my GitHub repositories couldn't be loaded right now. Please try again later.";
+    console.error(error);
+  }
+}
+
+loadRepos();
+

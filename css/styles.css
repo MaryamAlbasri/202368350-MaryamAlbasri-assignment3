@@ -333,3 +333,16 @@ footer {
     transform: translateY(0);
   }
 }
+/* GitHub repo cards */
+.repo-card {
+  padding-top: 4px;
+}
+
+.repo-card a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.repo-meta {
+  font-size: 0.85rem;
+}
