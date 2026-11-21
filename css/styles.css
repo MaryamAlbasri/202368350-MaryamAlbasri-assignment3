@@ -119,6 +119,7 @@ h2 {
   background: var(--card);
   border-radius: 12px;
   overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 /* Project images fill the card; zoom cursor shows they can be clicked */
@@ -262,6 +263,7 @@ footer {
   background: var(--accent);
   color: #ffffff;
 }
+
 #project-search,
 #project-sort {
   min-width: 180px;
@@ -283,10 +285,7 @@ footer {
 }
 
 
-/* Card hover effect */
-.project-card {
-  transition: transform 0.2s, box-shadow 0.2s;
-}
+
 
 .project-card:hover {
   transform: translateY(-4px);
