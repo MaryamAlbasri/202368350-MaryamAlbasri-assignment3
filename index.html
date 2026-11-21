@@ -39,23 +39,28 @@
     <section id="projects">
       <h2>Projects</h2>
 
-      <!-- Filter buttons and search box -->
+      <!-- Filter buttons, search box and sort dropdown -->
       <div class="filter-bar">
         <button class="filter-btn active" data-filter="all">All</button>
         <button class="filter-btn" data-filter="web">Web</button>
         <button class="filter-btn" data-filter="hardware">Hardware</button>
         <input type="search" id="project-search" placeholder="Search projects...">
+        <select id="project-sort" aria-label="Sort projects">
+          <option value="newest">Newest first</option>
+          <option value="oldest">Oldest first</option>
+          <option value="az">Name (A–Z)</option>
+        </select>
       </div>
 
       <div class="project-grid">
-        <article class="project-card" data-category="web">
+        <article class="project-card" data-category="web" data-date="2026-05-01">
           <img src="assets/images/LogIn.png" alt="University Bus Tracker prototype">
           <h3>University Bus Tracker</h3>
           <p>A team project for SWE206 that helps students track campus buses and check routes and schedules, making it
             easier to plan trips around the university.</p>
         </article>
 
-        <article class="project-card" data-category="hardware">
+        <article class="project-card" data-category="hardware" data-date="2025-12-01">
           <img src="assets/images/Piplines.jpg" alt="Pipelined MIPS processor in Logisim">
           <h3>Pipelined MIPS Processor</h3>
           <p>A COE301 project where I designed a 5-stage pipelined MIPS processor in Logisim, including data forwarding
@@ -66,7 +71,6 @@
       <!-- Shown when no project matches the filter or the search -->
       <p id="no-results" class="hidden">No projects found. Try a different filter or search term.</p>
     </section>
-
 
         <!-- GitHub repositories (loaded from the GitHub API) -->
     <section id="github">

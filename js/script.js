@@ -244,3 +244,22 @@ async function loadRepos() {
 
 loadRepos();
 
+/* Sort the project cards by date or name */
+const sortSelect = document.getElementById("project-sort");
+const projectGrid = document.querySelector("#projects .project-grid");
+
+function sortProjects() {
+  const sorted = [...cards].sort((a, b) => {
+    if (sortSelect.value === "az") {
+      return a.querySelector("h3").textContent.localeCompare(b.querySelector("h3").textContent);
+    }
+    const diff = new Date(a.dataset.date) - new Date(b.dataset.date);
+    return sortSelect.value === "newest" ? -diff : diff;
+  });
+
+  /* appendChild moves existing cards into the new order */
+  sorted.forEach((card) => projectGrid.appendChild(card));
+}
+
+sortSelect.addEventListener("change", sortProjects);
+sortProjects(); /* apply the default order on page load */

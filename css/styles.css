@@ -263,8 +263,8 @@ footer {
   color: #ffffff;
 }
 
-  #project-search {
-  flex: 1;
+#project-search,
+#project-sort {  flex: 1;
   min-width: 180px;
   padding: 8px 12px;
   border: 1px solid var(--muted);
